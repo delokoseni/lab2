@@ -1,5 +1,7 @@
+#define _CRT_SECURE_NO_WARNINGS
 #pragma once
 #include <string.h>
+#include <stdio.h>
 
 //АТД стаж
 typedef struct experience {
@@ -37,9 +39,12 @@ typedef struct employee {
 	
 } Employee;
 
+//#define _CRT_SECURE_NO_WARNINGS
+
 //функция инициализации
-void initiation(Employee human, int id, int workingyears, int army, int maternityleave,
+Employee initiation(int id, int workingyears, int army, int maternityleave,
 	int normal, int overtime, int weekends, char jtitle[], int hourlycost, int amount, int ASoS) {
+	Employee human;
 	human.id = id;
 	human.exp.workingyears = workingyears;
 	human.exp.army = army;
@@ -51,6 +56,7 @@ void initiation(Employee human, int id, int workingyears, int army, int maternit
 	human.jt.hourlycost = hourlycost;
 	human.jt.subs.amount = amount;
 	human.jt.subs.ASoS = ASoS;
+	return human;
 }
 //функция ввода
 void input(Employee human) {
