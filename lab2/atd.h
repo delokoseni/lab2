@@ -2,6 +2,7 @@
 #pragma once
 #include <string.h>
 #include <stdio.h>
+#include <iostream>
 
 //АТД стаж
 typedef struct experience {
@@ -39,8 +40,6 @@ typedef struct employee {
 	
 } Employee;
 
-//#define _CRT_SECURE_NO_WARNINGS
-
 //функция инициализации
 Employee initiation(int id, int workingyears, int army, int maternityleave,
 	int normal, int overtime, int weekends, char jtitle[], int hourlycost, int amount, int ASoS) {
@@ -65,7 +64,11 @@ void input(Employee human) {
 
 //функция вывода
 void output(Employee human) {
-
+	setlocale(LC_ALL, "Russian");
+	printf("ID: %d\n", human.id);
+	printf("Стаж: %d\n", human.exp.workingyears + human.exp.army + human.exp.maternityleave);
+	printf("Отработано часов за месяц: %d\n", human.h.normal + human.h.overtime + human.h.weekends);
+	printf("Должность: %s\n", human.jt.jtitle);
 }
 
 //функция подсчета зарплаты
