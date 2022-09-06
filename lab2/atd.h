@@ -16,6 +16,7 @@ typedef struct employee {
 	}Hours;
 	//АТД должность
 	typedef struct jobtitle {
+		char jtitle[30]; //наименование должности
 		int hourlycost; //стоимость часа работы
 		//АТД подчиненные
 		typedef struct subordinates {
@@ -26,7 +27,7 @@ typedef struct employee {
 } Employee;
 //функция инициализации
 void initiation(Employee human, int id, int workingyears, int army, int maternityleave,
-	int normal, int overtime, int weekends, int hourlycost, int amount, int ASoS){
+	int normal, int overtime, int weekends, char jtitle[], int hourlycost, int amount, int ASoS) {
 
 }
 //функция ввода
