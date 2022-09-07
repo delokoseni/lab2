@@ -21,7 +21,7 @@ typedef struct hours {
 //ј“ƒ подчиненные
 typedef struct subordinates {
 	int amount; //кол-во подчиненных
-	int ASoS; //average seniority of subordinates - средний стаж подчиненных
+	float ASoS; //average seniority of subordinates - средний стаж подчиненных
 }Subordinates;
 
 //ј“ƒ должность
@@ -42,7 +42,7 @@ typedef struct employee {
 
 //функци€ инициализации
 Employee initiation(int id, int workingyears, int army, int maternityleave,
-	int normal, int overtime, int weekends, char jtitle[], int hourlycost, int amount, int ASoS) {
+	int normal, int overtime, int weekends, char jtitle[], int hourlycost, int amount, float ASoS) {
 	Employee human;
 	human.id = id;
 	human.exp.workingyears = workingyears;
@@ -58,13 +58,45 @@ Employee initiation(int id, int workingyears, int army, int maternityleave,
 	return human;
 }
 //функци€ ввода
-void input(Employee human) {
-
+Employee input() {
+	Employee human;
+	printf("¬ведите ID: ");
+	scanf("%d", &(human.id));
+	printf("¬ведите общий стаж (кол-во лет): ");
+	scanf("%d", &(human.exp.workingyears));
+	printf("»з них в армии (кол-во лет): ");
+	scanf("%d", &(human.exp.army));
+	printf("»з них в декретном отпуске (кол-во лет): ");
+	scanf("%d", &(human.exp.maternityleave));
+	if (human.exp.army > 0)
+		human.exp.workingyears -= human.exp.army;
+	if (human.exp.maternityleave > 0)
+		human.exp.workingyears -= human.exp.maternityleave;
+	printf("¬ведите кол-во отработанных за мес€ц часов: ");
+	scanf("%d", &(human.h.normal));
+	printf("¬ведите кол-во сверхурочных часов : ");
+	scanf("%d", &(human.h.overtime));
+	printf("¬ведите кол-во отработанных за мес€ц часов в выходные: ");
+	scanf("%d", &(human.h.weekends));
+	if (human.h.overtime > 0)
+		human.h.normal -= human.h.overtime;
+	if (human.h.weekends > 0)
+		human.h.normal -= human.h.weekends;
+	printf("¬ведите должность: ");
+	scanf("%s", human.jt.jtitle);
+	printf("¬ведите стоимость часа работы: ");
+	scanf("%d", &(human.jt.hourlycost));
+	printf("¬ведите количество подчиненных сотрудника: ");
+	scanf("%d", &(human.jt.subs.amount));
+	if (human.jt.subs.amount > 0) {
+		printf("¬ведите средний стаж подчиненных сотрудника: ");
+		scanf("%f", &(human.jt.subs.ASoS));
+	}
+	return human;
 }
 
 //функци€ вывода
 void output(Employee human) {
-	setlocale(LC_ALL, "Russian");
 	printf("ID: %d\n", human.id);
 	printf("—таж: %d\n", human.exp.workingyears + human.exp.army + human.exp.maternityleave);
 	printf("ќтработано часов за мес€ц: %d\n", human.h.normal + human.h.overtime + human.h.weekends);
