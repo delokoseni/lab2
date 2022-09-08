@@ -62,7 +62,9 @@ Employee input() {
 	Employee human;
 	int id, army, normal, overtime, weekends, hourlycost, amount;
 	float ASoS, workingyears, maternityleave;
+	long lenghtofjtitle = 0;
 	char jtitle[30];
+	//char *jtitle = (char*)malloc(sizeof(char)), c;
 	printf("¬ведите ID: ");
 	scanf("%d", &id);
 	printf("¬ведите общий стаж (кол-во лет): ");
@@ -85,8 +87,14 @@ Employee input() {
 		normal -= overtime;
 	if (weekends > 0)
 		normal -= weekends;
+	//while (getchar() != '\n');
 	printf("¬ведите должность: ");
-	scanf("%s", jtitle);
+
+	/*while ((c = getchar()) != '\n') {
+		jtitle[lenghtofjtitle] = c;
+		jtitle = (char*)realloc(jtitle, (1 + (lenghtofjtitle++)) * sizeof(char));
+	}*/
+
 	printf("¬ведите стоимость часа работы: ");
 	scanf("%d", &hourlycost);
 	printf("¬ведите количество подчиненных сотрудника: ");
@@ -126,13 +134,13 @@ void shortoutput(Employee human) {
 }
 
 //функци€ подсчета зарплаты
-int Salary(Employee human) {
+int getsalary(Employee human) {
 	int salary = 0; //зарплата
 	return salary;
 }
 
 //функци€ подсчета премии
-int Premium(Employee human) {
+int getpremium(Employee human) {
 	int premium = 0; //преми€
 	return premium;
 }
