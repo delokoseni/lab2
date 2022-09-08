@@ -6,9 +6,9 @@
 
 //АТД стаж
 typedef struct experience {
-	int workingyears; //кол-во реально отработанных лет
+	float workingyears; //кол-во реально отработанных лет
 	int army; //кол-во лет в армии, если сохранялось рабочее место
-	int maternityleave; //кол-во лет в декретном отпуске, если сохранялось рабочее место
+	float maternityleave; //кол-во лет в декретном отпуске, если сохранялось рабочее место
 }Experience;
 
 //АТД отработанные за месяц часы
@@ -41,7 +41,7 @@ typedef struct employee {
 } Employee;
 
 //функция инициализации
-Employee initiation(int id, int workingyears, int army, int maternityleave,
+Employee initiation(int id, float workingyears, int army, float maternityleave,
 	int normal, int overtime, int weekends, char jtitle[], int hourlycost, int amount, float ASoS) {
 	Employee human;
 	human.id = id;
@@ -60,17 +60,17 @@ Employee initiation(int id, int workingyears, int army, int maternityleave,
 //функция ввода
 Employee input() {
 	Employee human;
-	int id, workingyears, army, maternityleave, normal, overtime, weekends, hourlycost, amount;
-	float ASoS;
+	int id, army, normal, overtime, weekends, hourlycost, amount;
+	float ASoS, workingyears, maternityleave;
 	char jtitle[30];
 	printf("Введите ID: ");
 	scanf("%d", &id);
 	printf("Введите общий стаж (кол-во лет): ");
-	scanf("%d", &workingyears);
+	scanf("%f", &workingyears);
 	printf("Из них в армии (кол-во лет): ");
 	scanf("%d", &army);
 	printf("Из них в декретном отпуске (кол-во лет): ");
-	scanf("%d", &maternityleave);
+	scanf("%f", &maternityleave);
 	if (army > 0)
 		workingyears -= army;
 	if (maternityleave > 0)
@@ -105,22 +105,22 @@ Employee input() {
 //функция полного вывода
 void output(Employee human) {
 	printf("ID: %d\n", human.id);
-	printf("Стаж (отработано лет): %d\n", human.exp.workingyears);
+	printf("Стаж (отработано лет): %.1f\n", human.exp.workingyears);
 	printf("Стаж (кол-во лет в армии): %d\n", human.exp.army);
-	printf("Стаж (кол-во лет в декретном отпуске): %d\n", human.exp.maternityleave);
+	printf("Стаж (кол-во лет в декретном отпуске): %.1f\n", human.exp.maternityleave);
 	printf("Отработано часов за месяц(по графику): %d\n", human.hour.normal);
 	printf("Отработано часов за месяц(сверхурочно): %d\n", human.hour.overtime);
 	printf("Отработано часов за месяц(в выходные дни): %d\n", human.hour.weekends);
 	printf("Должность: %s\n", human.jt.jtitle);
 	printf("Стоимость часа работы: %d\n", human.jt.hourlycost);
 	printf("Кол-во подчиненных: %d\n", human.jt.subs.amount);
-	printf("Средний стаж подчиненных: %d\n", human.jt.subs.ASoS);
+	printf("Средний стаж подчиненных: %.1f\n", human.jt.subs.ASoS);
 }
 
 //функция короткого вывода
 void shortoutput(Employee human) {
 	printf("ID: %d\n", human.id);
-	printf("Стаж: %d\n", human.exp.workingyears + human.exp.army + human.exp.maternityleave);
+	printf("Стаж: %.1f\n", human.exp.workingyears + human.exp.army + human.exp.maternityleave);
 	printf("Отработано часов за месяц: %d\n", human.hour.normal + human.hour.overtime + human.hour.weekends);
 	printf("Должность: %s\n", human.jt.jtitle);
 }
