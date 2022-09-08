@@ -35,7 +35,7 @@ typedef struct jobtitle {
 typedef struct employee {
 	int id; //индивидуальный номер
 	Experience exp; //стаж
-	Hours h; //отработанные за месяц часы
+	Hours hour; //отработанные за месяц часы
 	Jobtitle jt; //должность
 	
 } Employee;
@@ -48,9 +48,9 @@ Employee initiation(int id, int workingyears, int army, int maternityleave,
 	human.exp.workingyears = workingyears;
 	human.exp.army = army;
 	human.exp.maternityleave = maternityleave;
-	human.h.normal = normal;
-	human.h.overtime = overtime;
-	human.h.weekends = weekends;
+	human.hour.normal = normal;
+	human.hour.overtime = overtime;
+	human.hour.weekends = weekends;
 	strcpy(human.jt.jtitle, jtitle);
 	human.jt.hourlycost = hourlycost;
 	human.jt.subs.amount = amount;
@@ -73,15 +73,15 @@ Employee input() {
 	if (human.exp.maternityleave > 0)
 		human.exp.workingyears -= human.exp.maternityleave;
 	printf("Введите кол-во отработанных за месяц часов: ");
-	scanf("%d", &(human.h.normal));
+	scanf("%d", &(human.hour.normal));
 	printf("Введите кол-во сверхурочных часов : ");
-	scanf("%d", &(human.h.overtime));
+	scanf("%d", &(human.hour.overtime));
 	printf("Введите кол-во отработанных за месяц часов в выходные: ");
-	scanf("%d", &(human.h.weekends));
-	if (human.h.overtime > 0)
-		human.h.normal -= human.h.overtime;
-	if (human.h.weekends > 0)
-		human.h.normal -= human.h.weekends;
+	scanf("%d", &(human.hour.weekends));
+	if (human.hour.overtime > 0)
+		human.hour.normal -= human.hour.overtime;
+	if (human.hour.weekends > 0)
+		human.hour.normal -= human.hour.weekends;
 	printf("Введите должность: ");
 	scanf("%s", human.jt.jtitle);
 	printf("Введите стоимость часа работы: ");
@@ -95,11 +95,26 @@ Employee input() {
 	return human;
 }
 
-//функция вывода
+//функция полного вывода
 void output(Employee human) {
 	printf("ID: %d\n", human.id);
+	printf("Стаж (отработано лет): %d\n", human.exp.workingyears);
+	printf("Стаж (кол-во лет в армии): %d\n", human.exp.army);
+	printf("Стаж (кол-во лет в декретном отпуске): %d\n", human.exp.maternityleave);
+	printf("Отработано часов за месяц(по графику): %d\n", human.hour.normal);
+	printf("Отработано часов за месяц(сверхурочно): %d\n", human.hour.overtime);
+	printf("Отработано часов за месяц(в выходные дни): %d\n", human.hour.weekends);
+	printf("Должность: %s\n", human.jt.jtitle);
+	printf("Стоимость часа работы: %s\n", human.jt.hourlycost);
+	printf("Кол-во подчиненных: %s\n", human.jt.subs.amount);
+	printf("Средний стаж подчиненных: %s\n", human.jt.subs.ASoS);
+}
+
+//функция короткого вывода
+void shortoutput(Employee human) {
+	printf("ID: %d\n", human.id);
 	printf("Стаж: %d\n", human.exp.workingyears + human.exp.army + human.exp.maternityleave);
-	printf("Отработано часов за месяц: %d\n", human.h.normal + human.h.overtime + human.h.weekends);
+	printf("Отработано часов за месяц: %d\n", human.hour.normal + human.hour.overtime + human.hour.weekends);
 	printf("Должность: %s\n", human.jt.jtitle);
 }
 
