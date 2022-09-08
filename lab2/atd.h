@@ -60,38 +60,45 @@ Employee initiation(int id, int workingyears, int army, int maternityleave,
 //функция ввода
 Employee input() {
 	Employee human;
+	int id, workingyears, army, maternityleave, normal, overtime, weekends, hourlycost, amount;
+	float ASoS;
+	char jtitle[30];
 	printf("Введите ID: ");
-	scanf("%d", &(human.id));
+	scanf("%d", &id);
 	printf("Введите общий стаж (кол-во лет): ");
-	scanf("%d", &(human.exp.workingyears));
+	scanf("%d", &workingyears);
 	printf("Из них в армии (кол-во лет): ");
-	scanf("%d", &(human.exp.army));
+	scanf("%d", &army);
 	printf("Из них в декретном отпуске (кол-во лет): ");
-	scanf("%d", &(human.exp.maternityleave));
-	if (human.exp.army > 0)
-		human.exp.workingyears -= human.exp.army;
-	if (human.exp.maternityleave > 0)
-		human.exp.workingyears -= human.exp.maternityleave;
+	scanf("%d", &maternityleave);
+	if (army > 0)
+		workingyears -= army;
+	if (maternityleave > 0)
+		workingyears -= maternityleave;
 	printf("Введите кол-во отработанных за месяц часов: ");
-	scanf("%d", &(human.hour.normal));
+	scanf("%d", &(normal));
 	printf("Введите кол-во сверхурочных часов : ");
-	scanf("%d", &(human.hour.overtime));
+	scanf("%d", &(overtime));
 	printf("Введите кол-во отработанных за месяц часов в выходные: ");
-	scanf("%d", &(human.hour.weekends));
-	if (human.hour.overtime > 0)
-		human.hour.normal -= human.hour.overtime;
-	if (human.hour.weekends > 0)
-		human.hour.normal -= human.hour.weekends;
+	scanf("%d", &(weekends));
+	if (overtime > 0)
+		normal -= overtime;
+	if (weekends > 0)
+		normal -= weekends;
 	printf("Введите должность: ");
-	scanf("%s", human.jt.jtitle);
+	scanf("%s", jtitle);
 	printf("Введите стоимость часа работы: ");
-	scanf("%d", &(human.jt.hourlycost));
+	scanf("%d", &hourlycost);
 	printf("Введите количество подчиненных сотрудника: ");
-	scanf("%d", &(human.jt.subs.amount));
-	if (human.jt.subs.amount > 0) {
+	scanf("%d", &amount);
+	if (amount > 0) {
 		printf("Введите средний стаж подчиненных сотрудника: ");
-		scanf("%f", &(human.jt.subs.ASoS));
+		scanf("%f", &ASoS);
 	}
+	else
+		ASoS = 0;
+	human = initiation(id, workingyears, army, maternityleave, normal, overtime, \
+		weekends, jtitle, hourlycost, amount, ASoS);
 	return human;
 }
 
@@ -105,9 +112,9 @@ void output(Employee human) {
 	printf("Отработано часов за месяц(сверхурочно): %d\n", human.hour.overtime);
 	printf("Отработано часов за месяц(в выходные дни): %d\n", human.hour.weekends);
 	printf("Должность: %s\n", human.jt.jtitle);
-	printf("Стоимость часа работы: %s\n", human.jt.hourlycost);
-	printf("Кол-во подчиненных: %s\n", human.jt.subs.amount);
-	printf("Средний стаж подчиненных: %s\n", human.jt.subs.ASoS);
+	printf("Стоимость часа работы: %d\n", human.jt.hourlycost);
+	printf("Кол-во подчиненных: %d\n", human.jt.subs.amount);
+	printf("Средний стаж подчиненных: %d\n", human.jt.subs.ASoS);
 }
 
 //функция короткого вывода
