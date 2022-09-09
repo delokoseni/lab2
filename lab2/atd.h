@@ -139,8 +139,10 @@ int getsalary(Employee human) {
 	return salary;
 }
 
-//функция подсчета премии
-int getpremium(Employee human) {
-	int premium = 0; //премия
-	return premium;
+//функция подсчета премии (положена или нет)
+int getpremium(Employee human, int houramount) {
+	if(human.hour.normal + human.hour.overtime + human.hour.weekends < houramount)
+		return 0;
+	else 
+		return 1;
 }
