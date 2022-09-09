@@ -13,7 +13,8 @@ int main()
         output(human1);
         human1 = input();
         shortoutput(human1);
-        printf("%d\n", getpremium(human1, 140));
+        printf("Положена ли премия: %d\n", getpremium(human1, 140));
+        printf("Зарплата: %d\n", getsalary(human1, 200, 210, 5, 1, 2, 1));
         printf("Для повтора программы нажмите любую клавишу.\n");
         printf("Для выхода из программы нажмите ESC.\n");
         c = _getch();

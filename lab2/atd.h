@@ -134,8 +134,23 @@ void shortoutput(Employee human) {
 }
 
 //функция подсчета зарплаты
-int getsalary(Employee human) {
+int getsalary(Employee human, int overtimecost, int weekendscost, int exppercent,\
+	int expstatus, int subspercent, int subsstatus) {
 	int salary = 0; //зарплата
+	int experience = human.exp.workingyears + human.exp.army + human.exp.maternityleave;
+	salary += human.hour.normal * human.jt.hourlycost;
+	salary += human.hour.overtime * overtimecost;
+	salary += human.hour.weekends * weekendscost;
+	//учет стажа
+	if (expstatus == true)
+		salary += salary / 100 * exppercent * experience;
+	else
+		salary += salary / 100 * exppercent * human.exp.workingyears;
+	//учет наличия подчиненных
+	if (human.jt.subs.amount && subsstatus)
+		salary += human.jt.subs.amount * salary / 100 * subspercent / human.jt.subs.ASoS;
+	else
+		salary += human.jt.subs.amount * salary / 100 * subspercent;
 	return salary;
 }
 
