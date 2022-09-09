@@ -37,7 +37,7 @@ typedef struct employee {
 	Experience exp; //стаж
 	Hours hour; //отработанные за мес€ц часы
 	Jobtitle jt; //должность
-	
+
 } Employee;
 
 //функци€ инициализации
@@ -62,9 +62,9 @@ Employee input() {
 	Employee human;
 	int id, army, normal, overtime, weekends, hourlycost, amount;
 	float ASoS, workingyears, maternityleave;
-	long lenghtofjtitle = 0;
-	char jtitle[30];
-	//char *jtitle = (char*)malloc(sizeof(char)), c;
+	long lenghtofjtitle = 1; //длина jtitle + 1
+	char* jtitle, c;
+	jtitle = (char*)malloc(sizeof(char));
 	printf("¬ведите ID: ");
 	scanf("%d", &id);
 	printf("¬ведите общий стаж (кол-во лет): ");
@@ -87,14 +87,14 @@ Employee input() {
 		normal -= overtime;
 	if (weekends > 0)
 		normal -= weekends;
-	//while (getchar() != '\n');
+	while (getchar() != '\n');
 	printf("¬ведите должность: ");
-
-	/*while ((c = getchar()) != '\n') {
-		jtitle[lenghtofjtitle] = c;
-		jtitle = (char*)realloc(jtitle, (1 + (lenghtofjtitle++)) * sizeof(char));
-	}*/
-
+	while ((c = getchar()) != '\n') {
+		jtitle[lenghtofjtitle - 1] = c;
+		lenghtofjtitle++;
+		jtitle = (char*)realloc(jtitle, lenghtofjtitle);
+	}
+	jtitle[lenghtofjtitle - 1] = '\0';
 	printf("¬ведите стоимость часа работы: ");
 	scanf("%d", &hourlycost);
 	printf("¬ведите количество подчиненных сотрудника: ");
