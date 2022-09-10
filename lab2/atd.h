@@ -26,7 +26,7 @@ typedef struct subordinates {
 
 //АТД должность
 typedef struct jobtitle {
-	char *jtitle; //наименование должности
+	char* jtitle; //наименование должности
 	int hourlycost; //стоимость часа работы
 	Subordinates subs; //подчиненные
 }Jobtitle;
@@ -135,7 +135,7 @@ void shortoutput(Employee human) {
 }
 
 //функция подсчета зарплаты
-int getsalary(Employee human, int overtimecost, int weekendscost, int exppercent,\
+int getsalary(Employee human, int overtimecost, int weekendscost, int exppercent, \
 	int expstatus, int subspercent, int subsstatus) {
 	int salary = 0; //зарплата
 	float experience = human.exp.workingyears + human.exp.army + human.exp.maternityleave;
@@ -157,8 +157,8 @@ int getsalary(Employee human, int overtimecost, int weekendscost, int exppercent
 
 //функция подсчета премии (положена или нет)
 int getpremium(Employee human, int houramount) {
-	if(human.hour.normal + human.hour.overtime + human.hour.weekends < houramount)
+	if (human.hour.normal + human.hour.overtime + human.hour.weekends < houramount)
 		return 0;
-	else 
+	else
 		return 1;
 }
