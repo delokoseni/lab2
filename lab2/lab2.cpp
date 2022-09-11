@@ -20,6 +20,8 @@ int main()
         human2.output();
         human3.output();
         human3.shortoutput();
+        human3.input();
+        human3.output();
         printf("Для повтора программы нажмите любую клавишу.\n");
         printf("Для выхода из программы нажмите ESC.\n");
         c = _getch();
