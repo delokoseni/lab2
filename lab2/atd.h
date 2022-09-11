@@ -1,164 +1,131 @@
 #define _CRT_SECURE_NO_WARNINGS
 #pragma once
-#include <string.h>
+#include <string>
 #include <stdio.h>
 #include <iostream>
+using namespace std;
 
 //АТД стаж
-typedef struct experience {
+class experience {
+public:
+	experience(float w, int a, float m);
+	experience();
+private:
 	float workingyears; //кол-во реально отработанных лет
 	int army; //кол-во лет в армии, если сохранялось рабочее место
 	float maternityleave; //кол-во лет в декретном отпуске, если сохранялось рабочее место
-}Experience;
+};
+
+//конструктор класса experience со всеми параметрами
+experience::experience(float w, int a, float m) {
+	workingyears = w;
+	army = a;
+	maternityleave = m;
+}
+
+//конструктор класса experience без параметров
+experience::experience() {
+	workingyears = 0;
+	army = 0;
+	maternityleave = 0;
+}
 
 //АТД отработанные за месяц часы
-typedef struct hours {
+class hours {
+public:
+	hours(int n, int o, int w);
+	hours();
+private:
 	int normal; //кол-во часов, отработанных по графику
 	int overtime; //кол-во часов, отработанных сверхурочно
 	int weekends; //кол - во часов, отработанных в выходные дни
-}Hours;
+};
+
+//конструктор класса hours со всеми параметрами
+hours::hours(int n, int o, int w) {
+	normal = n;
+	overtime = o;
+	weekends = w;
+}
+
+//конструктор класса hours без параметров
+hours::hours() {
+	normal = 0;
+	overtime = 0;
+	weekends = 0;
+}
 
 //АТД подчиненные
-typedef struct subordinates {
+class subordinates {
+public:
+	subordinates(int a, int A);
+	subordinates();
+private:
 	int amount; //кол-во подчиненных
 	float ASoS; //average seniority of subordinates - средний стаж подчиненных
-}Subordinates;
+};
+
+//конструктор класса subordinates со всеми параметрами
+subordinates::subordinates(int a, int A) {
+	amount = a;
+	ASoS = A;
+}
+
+//конструктор класса subordinates без параметров
+subordinates::subordinates() {
+	amount = 0;
+	ASoS = 0;
+}
 
 //АТД должность
-typedef struct jobtitle {
+class jobtitle {
+public:
+	jobtitle(char* j, int h, subordinates s);
+	jobtitle();
+private:
 	char* jtitle; //наименование должности
 	int hourlycost; //стоимость часа работы
-	Subordinates subs; //подчиненные
-}Jobtitle;
+	subordinates subs; //подчиненные
+};
+
+//конструктор класса jobtitle со всеми параметрами
+jobtitle::jobtitle(char* j, int h, subordinates s) {
+	jtitle = j;
+	hourlycost = h;
+	subs = s;
+}
+
+//конструктор класса jobtitle без параметров
+jobtitle::jobtitle() {
+	jtitle = NULL;
+	hourlycost = 0;
+	subordinates subs();
+}
 
 //АТД Сотрудник
-typedef struct employee {
+class employee {
+public:
+	employee(int i, experience e, hours h, jobtitle j);
+	employee();
+private:
 	int id; //индивидуальный номер
-	Experience exp; //стаж
-	Hours hour; //отработанные за месяц часы
-	Jobtitle jt; //должность
+	experience exp; //стаж
+	hours hour; //отработанные за месяц часы
+	jobtitle jt; //должность
+};
 
-} Employee;
-
-//функция инициализации
-Employee initiation(int id, float workingyears, int army, float maternityleave,
-	int normal, int overtime, int weekends, char jtitle[], int hourlycost, int amount, float ASoS) {
-	Employee human;
-	human.jt.jtitle = (char*)malloc(sizeof(char));
-	human.id = id;
-	human.exp.workingyears = workingyears;
-	human.exp.army = army;
-	human.exp.maternityleave = maternityleave;
-	human.hour.normal = normal;
-	human.hour.overtime = overtime;
-	human.hour.weekends = weekends;
-	strcpy(human.jt.jtitle, jtitle);
-	human.jt.hourlycost = hourlycost;
-	human.jt.subs.amount = amount;
-	human.jt.subs.ASoS = ASoS;
-	return human;
-}
-//функция ввода
-Employee input() {
-	Employee human;
-	int id, army, normal, overtime, weekends, hourlycost, amount;
-	float ASoS, workingyears, maternityleave;
-	long lenghtofjtitle = 1; //длина jtitle + 1
-	char* jtitle, c;
-	jtitle = (char*)malloc(sizeof(char));
-	printf("Введите ID: ");
-	scanf("%d", &id);
-	printf("Введите общий стаж (кол-во лет): ");
-	scanf("%f", &workingyears);
-	printf("Из них в армии (кол-во лет): ");
-	scanf("%d", &army);
-	printf("Из них в декретном отпуске (кол-во лет): ");
-	scanf("%f", &maternityleave);
-	if (army > 0)
-		workingyears -= army;
-	if (maternityleave > 0)
-		workingyears -= maternityleave;
-	printf("Введите кол-во отработанных за месяц часов: ");
-	scanf("%d", &(normal));
-	printf("Введите кол-во сверхурочных часов : ");
-	scanf("%d", &(overtime));
-	printf("Введите кол-во отработанных за месяц часов в выходные: ");
-	scanf("%d", &(weekends));
-	if (overtime > 0)
-		normal -= overtime;
-	if (weekends > 0)
-		normal -= weekends;
-	while (getchar() != '\n');
-	printf("Введите должность: ");
-	while ((c = getchar()) != '\n') {
-		jtitle[lenghtofjtitle - 1] = c;
-		lenghtofjtitle++;
-		jtitle = (char*)realloc(jtitle, lenghtofjtitle);
-	}
-	jtitle[lenghtofjtitle - 1] = '\0';
-	printf("Введите стоимость часа работы: ");
-	scanf("%d", &hourlycost);
-	printf("Введите количество подчиненных сотрудника: ");
-	scanf("%d", &amount);
-	if (amount > 0) {
-		printf("Введите средний стаж подчиненных сотрудника: ");
-		scanf("%f", &ASoS);
-	}
-	else
-		ASoS = 0;
-	human = initiation(id, workingyears, army, maternityleave, normal, overtime, \
-		weekends, jtitle, hourlycost, amount, ASoS);
-	return human;
+//конструктор класса employee со всеми параметрами
+employee::employee(int i, experience e, hours h, jobtitle j) {
+	id = i;
+	exp = e;
+	hour = h;
+	jt = j;
 }
 
-//функция полного вывода
-void output(Employee human) {
-	printf("ID: %d\n", human.id);
-	printf("Стаж (отработано лет): %.1f\n", human.exp.workingyears);
-	printf("Стаж (кол-во лет в армии): %d\n", human.exp.army);
-	printf("Стаж (кол-во лет в декретном отпуске): %.1f\n", human.exp.maternityleave);
-	printf("Отработано часов за месяц(по графику): %d\n", human.hour.normal);
-	printf("Отработано часов за месяц(сверхурочно): %d\n", human.hour.overtime);
-	printf("Отработано часов за месяц(в выходные дни): %d\n", human.hour.weekends);
-	printf("Должность: %s\n", human.jt.jtitle);
-	printf("Стоимость часа работы: %d\n", human.jt.hourlycost);
-	printf("Кол-во подчиненных: %d\n", human.jt.subs.amount);
-	printf("Средний стаж подчиненных: %.1f\n", human.jt.subs.ASoS);
-}
-
-//функция короткого вывода
-void shortoutput(Employee human) {
-	printf("ID: %d\n", human.id);
-	printf("Стаж: %.1f\n", human.exp.workingyears + human.exp.army + human.exp.maternityleave);
-	printf("Отработано часов за месяц: %d\n", human.hour.normal + human.hour.overtime + human.hour.weekends);
-	printf("Должность: %s\n", human.jt.jtitle);
-}
-
-//функция подсчета зарплаты
-int getsalary(Employee human, int overtimecost, int weekendscost, int exppercent, \
-	int expstatus, int subspercent, int subsstatus) {
-	int salary = 0; //зарплата
-	float experience = human.exp.workingyears + human.exp.army + human.exp.maternityleave;
-	salary += human.hour.normal * human.jt.hourlycost;
-	salary += human.hour.overtime * overtimecost;
-	salary += human.hour.weekends * weekendscost;
-	//учет стажа
-	if (expstatus == true)
-		salary += salary / 100 * exppercent * experience;
-	else
-		salary += salary / 100 * exppercent * human.exp.workingyears;
-	//учет наличия подчиненных
-	if (human.jt.subs.amount && subsstatus)
-		salary += human.jt.subs.amount * salary / 100 * subspercent / human.jt.subs.ASoS;
-	else
-		salary += human.jt.subs.amount * salary / 100 * subspercent;
-	return salary;
-}
-
-//функция подсчета премии (положена или нет)
-int getpremium(Employee human, int houramount) {
-	if (human.hour.normal + human.hour.overtime + human.hour.weekends < houramount)
-		return 0;
-	else
-		return 1;
+//конструктор класса employee без параметров
+employee::employee() {
+	id = 0;
+	experience exp();
+	hours hour();
+	jobtitle jt();
 }
