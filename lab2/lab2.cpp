@@ -6,8 +6,11 @@ int main()
 {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
-    employee human1;
-    char c, str[] = "Менеджер";
+    employee human1();
+    subordinates people(1, 1);
+    char c;
+    string str = "Менеджер";
+    jobtitle man(str, 140, people);
     do{
         
         printf("Для повтора программы нажмите любую клавишу.\n");

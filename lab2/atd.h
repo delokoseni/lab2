@@ -58,7 +58,7 @@ hours::hours() {
 //АТД подчиненные
 class subordinates {
 public:
-	subordinates(int a, int A);
+	subordinates(int a, float A);
 	subordinates();
 private:
 	int amount; //кол-во подчиненных
@@ -66,7 +66,7 @@ private:
 };
 
 //конструктор класса subordinates со всеми параметрами
-subordinates::subordinates(int a, int A) {
+subordinates::subordinates(int a, float A) {
 	amount = a;
 	ASoS = A;
 }
@@ -80,16 +80,16 @@ subordinates::subordinates() {
 //АТД должность
 class jobtitle {
 public:
-	jobtitle(char* j, int h, subordinates s);
+	jobtitle(string j, int h, subordinates s);
 	jobtitle();
 private:
-	char* jtitle; //наименование должности
+	string jtitle; //наименование должности
 	int hourlycost; //стоимость часа работы
 	subordinates subs; //подчиненные
 };
 
 //конструктор класса jobtitle со всеми параметрами
-jobtitle::jobtitle(char* j, int h, subordinates s) {
+jobtitle::jobtitle(string j, int h, subordinates s) {
 	jtitle = j;
 	hourlycost = h;
 	subs = s;
@@ -97,9 +97,9 @@ jobtitle::jobtitle(char* j, int h, subordinates s) {
 
 //конструктор класса jobtitle без параметров
 jobtitle::jobtitle() {
-	jtitle = NULL;
+	jtitle = "";
 	hourlycost = 0;
-	subordinates subs();
+	subordinates subs;
 }
 
 //АТД Сотрудник
@@ -125,7 +125,7 @@ employee::employee(int i, experience e, hours h, jobtitle j) {
 //конструктор класса employee без параметров
 employee::employee() {
 	id = 0;
-	experience exp();
-	hours hour();
-	jobtitle jt();
+	experience exp;
+	hours hour;
+	jobtitle jt;
 }
