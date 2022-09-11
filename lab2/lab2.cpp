@@ -7,6 +7,7 @@ int main()
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
     employee human1();
+    employee human2(1);
     subordinates people(1, 1);
     char c;
     string str = "Менеджер";

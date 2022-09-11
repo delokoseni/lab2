@@ -9,6 +9,7 @@ using namespace std;
 class experience {
 public:
 	experience(float w, int a, float m);
+	experience(int x);
 	experience();
 private:
 	float workingyears; //кол-во реально отработанных лет
@@ -23,6 +24,13 @@ experience::experience(float w, int a, float m) {
 	maternityleave = m;
 }
 
+//конструктор класса experience с одним параметром
+experience::experience(int x) {
+	workingyears = x;
+	army = x;
+	maternityleave = x;
+}
+
 //конструктор класса experience без параметров
 experience::experience() {
 	workingyears = 0;
@@ -34,6 +42,7 @@ experience::experience() {
 class hours {
 public:
 	hours(int n, int o, int w);
+	hours(int x);
 	hours();
 private:
 	int normal; //кол-во часов, отработанных по графику
@@ -48,6 +57,13 @@ hours::hours(int n, int o, int w) {
 	weekends = w;
 }
 
+//конструктор класса hours с одним параметром
+hours::hours(int x) {
+	normal = x;
+	overtime = x;
+	weekends = x;
+}
+
 //конструктор класса hours без параметров
 hours::hours() {
 	normal = 0;
@@ -59,6 +75,7 @@ hours::hours() {
 class subordinates {
 public:
 	subordinates(int a, float A);
+	subordinates(int x);
 	subordinates();
 private:
 	int amount; //кол-во подчиненных
@@ -71,6 +88,12 @@ subordinates::subordinates(int a, float A) {
 	ASoS = A;
 }
 
+//конструктор класса subordinates с одним параметром
+subordinates::subordinates(int x) {
+	amount = x;
+	ASoS = x;
+}
+
 //конструктор класса subordinates без параметров
 subordinates::subordinates() {
 	amount = 0;
@@ -81,6 +104,7 @@ subordinates::subordinates() {
 class jobtitle {
 public:
 	jobtitle(string j, int h, subordinates s);
+	jobtitle(int x);
 	jobtitle();
 private:
 	string jtitle; //наименование должности
@@ -95,6 +119,13 @@ jobtitle::jobtitle(string j, int h, subordinates s) {
 	subs = s;
 }
 
+//конструктор класса jobtitle с одним параметром
+jobtitle::jobtitle(int x) {
+	jtitle = to_string(x);
+	hourlycost = x;
+	subordinates subs(x, x);
+}
+
 //конструктор класса jobtitle без параметров
 jobtitle::jobtitle() {
 	jtitle = "";
@@ -106,6 +137,7 @@ jobtitle::jobtitle() {
 class employee {
 public:
 	employee(int i, experience e, hours h, jobtitle j);
+	employee(int x);
 	employee();
 private:
 	int id; //индивидуальный номер
@@ -120,6 +152,14 @@ employee::employee(int i, experience e, hours h, jobtitle j) {
 	exp = e;
 	hour = h;
 	jt = j;
+}
+
+//конструктор класса employee со всеми параметрами
+employee::employee(int x) {
+	id = x;
+	experience exp(x);
+	hours hour(x);
+	jobtitle jt(x);
 }
 
 //конструктор класса employee без параметров
