@@ -19,6 +19,7 @@ int main()
     do{
         human2.output();
         human3.output();
+        human3.shortoutput();
         printf("Для повтора программы нажмите любую клавишу.\n");
         printf("Для выхода из программы нажмите ESC.\n");
         c = _getch();

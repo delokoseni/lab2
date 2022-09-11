@@ -198,6 +198,7 @@ public:
 	employee(int x);
 	employee();
 	void output();
+	void shortoutput();
 private:
 	int id; //индивидуальный номер
 	experience exp; //стаж
@@ -229,7 +230,7 @@ employee::employee() {
 	jobtitle jt;
 }
 
-//метод полного вывода
+//метод полного вывода employee
 void employee::output() {
 	subordinates s = this->jt.getsubs();
 	cout << "ID: " << this->id << endl;
@@ -242,5 +243,15 @@ void employee::output() {
 	cout << "Должность: " << this->jt.getjtitle() << endl;
 	cout << "Стоимость часа работы: " << this->jt.gethourlycost() << endl;
 	cout << "Кол-во подчиненных: " << s.getamount() << endl;
-	cout << "Средний стаж подчиненных: " << s.getasos() << endl;
+	cout << "Средний стаж подчиненных: " << s.getasos() << endl << endl;
+}
+
+//метод короткого вывода employee
+void employee::shortoutput() {
+	cout << "ID: " << this->id << endl;
+	cout << "Стаж: " << this->exp.getworkingyears() \
+		+ this->exp.getarmy() + this->exp.getmaternityleave() << endl;
+	cout << "Отработано часов за месяц: " << this->hour.getnormal() \
+		+ this->hour.getovertime() + this->hour.getweekends() << endl;
+	cout << "Должность: "<< this->jt.getjtitle() << endl << endl;
 }
