@@ -16,6 +16,7 @@ int main()
     hours hour(1);
     jobtitle jt(1);
     employee human3(1, exp, hour, jt);
+    cout << "Зарплата: " << human3.getsalary(200, 220, 2, 1, 5, 1) << endl;
     do{
         human2.output();
         human3.output();

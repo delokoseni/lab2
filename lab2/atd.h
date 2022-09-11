@@ -229,6 +229,8 @@ public:
 	void output();
 	void shortoutput();
 	void input();
+	int getsalary(int overtimecost, int weekendscost, int exppercent, \
+		int expstatus, int subspercent, int subsstatus);
 private:
 	int id; //индивидуальный номер
 	experience exp; //стаж
@@ -326,4 +328,27 @@ void employee::input() {
 	subs.set(amount, asos);
 	jt.set(jtitle, hourlycost, subs);
 	this->jt = jt;
+}
+
+//метод подсчета зарплаты
+int employee::getsalary(int overtimecost, int weekendscost, int exppercent, \
+	int expstatus, int subspercent, int subsstatus) {
+	int salary = 0; //зарплата
+	float experience = this->exp.getworkingyears() + this->exp.getarmy() + this->exp.getmaternityleave();
+	salary += this->hour.getnormal() * this->jt.gethourlycost();
+	salary += this->hour.getovertime() * overtimecost;
+	salary += this->hour.getweekends() * weekendscost;
+	subordinates subs;
+	//учет стажа
+	if (expstatus == true)
+		salary += salary / 100 * exppercent * experience;
+	else
+		salary += salary / 100 * exppercent * this->exp.getworkingyears();
+	//учет наличия подчиненных
+	subs = this->jt.getsubs();
+	if (subs.getamount() && subsstatus)
+		salary += subs.getamount() * salary / 100 * subspercent / subs.getasos();
+	else
+		salary += subs.getamount() * salary / 100 * subspercent;
+	return salary;
 }
