@@ -231,6 +231,7 @@ public:
 	void input();
 	int getsalary(int overtimecost, int weekendscost, int exppercent, \
 		int expstatus, int subspercent, int subsstatus);
+	int getpremium(int houramount);
 private:
 	int id; //индивидуальный номер
 	experience exp; //стаж
@@ -351,4 +352,12 @@ int employee::getsalary(int overtimecost, int weekendscost, int exppercent, \
 	else
 		salary += subs.getamount() * salary / 100 * subspercent;
 	return salary;
+}
+
+//метод подсчета премии (положена или нет)
+int employee::getpremium(int houramount) {
+	if(this->hour.getnormal() + this->hour.getovertime() + this->hour.getweekends() < houramount)
+		return 0;
+	else
+		return 1;
 }

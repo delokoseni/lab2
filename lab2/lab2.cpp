@@ -6,20 +6,19 @@ int main()
 {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
+    char c;
     employee human1;
     employee human2(1);
-    subordinates people(1, 1);
-    char c;
-    string str = "Менеджер";
-    jobtitle man(str, 140, people);
     experience exp(1);
     hours hour(1);
     jobtitle jt(1);
     employee human3(1, exp, hour, jt);
-    cout << "Зарплата: " << human3.getsalary(200, 220, 2, 1, 5, 1) << endl;
     do{
+        human1.output();
         human2.output();
         human3.output();
+        cout << "Зарплата: " << human3.getsalary(200, 220, 2, 1, 5, 1) << endl;
+        cout << "Премия: " << human3.getpremium(200) << endl;
         human3.shortoutput();
         human3.input();
         human3.output();
