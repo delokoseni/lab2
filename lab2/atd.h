@@ -324,8 +324,9 @@ void employee::input() {
 	cin >> weekends;
 	hour.set(normal - overtime - weekends, overtime, weekends);
 	this->hour = hour;
+	while (getchar() != '\n');
 	cout << "¬ведите должность: ";
-	cin >> jtitle;
+	getline(cin, jtitle);
 	cout << "¬ведите стоимость часа работы: ";
 	cin >> hourlycost;
 	cout << "¬ведите количество подчиненных сотрудника: ";
