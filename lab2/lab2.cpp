@@ -8,7 +8,7 @@ int main()
     SetConsoleOutputCP(1251);
     char c;
     employee human1;
-    employee human2(1);
+    employee human2(2);
     experience exp(1);
     hours hour(1);
     jobtitle jt(1);
