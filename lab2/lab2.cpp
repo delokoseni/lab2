@@ -8,7 +8,7 @@ int main()
     SetConsoleOutputCP(1251);
     int size, i;
     char c;
-    employee human1;
+    employee human1, *men[5];
     employee human2(2);
     experience exp(1);
     hours hour(1);
@@ -30,6 +30,12 @@ int main()
             cout << "Премия: " << (*arr).getpremium(140) << endl;
         }
         delete[] arr;
+        employee* human = new employee;
+        *human = human1;
+        for (i = 0; i < 5; i++)
+            men[i] = human;
+        men[0]->output();
+        delete human;
         printf("Для повтора программы нажмите любую клавишу.\n");
         printf("Для выхода из программы нажмите ESC.\n");
         c = _getch();
