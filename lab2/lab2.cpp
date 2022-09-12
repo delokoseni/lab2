@@ -6,6 +6,7 @@ int main()
 {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
+    int size, i;
     char c;
     employee human1;
     employee human2(2);
@@ -20,8 +21,15 @@ int main()
         cout << "Зарплата: " << human3.getsalary(200, 220, 2, 1, 5, 1) << endl;
         cout << "Премия: " << human3.getpremium(200) << endl;
         human3.shortoutput();
-        human3.input();
-        human3.output();
+        cout << "Введите размер массива: ";
+        cin >> size;
+        employee* arr = new employee[size];
+        for (i = 0; i < size; i++) {
+            (arr + i)->input();
+            (arr + i)->shortoutput();
+            cout << "Премия: " << (*arr).getpremium(140) << endl;
+        }
+        delete[] arr;
         printf("Для повтора программы нажмите любую клавишу.\n");
         printf("Для выхода из программы нажмите ESC.\n");
         c = _getch();
