@@ -14,7 +14,6 @@ public:
 	float getworkingyears();
 	int getarmy();
 	float getmaternityleave();
-	void set(float w, int a, float m);
 	void input();
 private:
 	float workingyears; //кол-во реально отработанных лет
@@ -56,13 +55,6 @@ float experience::getmaternityleave() {
 	return this->maternityleave;
 }
 
-//метод установки значений в классе experience
-void experience::set(float w, int a, float m) {
-	workingyears = w;
-	army = a;
-	maternityleave = m;
-}
-
 //метод ввода класса experience
 void experience::input() {
 	cout << "¬ведите общий стаж (кол-во лет): ";
@@ -83,7 +75,6 @@ public:
 	int getnormal();
 	int getovertime();
 	int getweekends();
-	void set(int n, int o, int w);
 	void input();
 private:
 	int normal; //кол-во часов, отработанных по графику
@@ -123,13 +114,6 @@ int hours::getweekends() {
 	return this->weekends;
 }
 
-//метод установки значений в классе hours
-void hours::set(int n , int o, int w) {
-	normal = n;
-	overtime = o;
-	weekends = w;
-}
-
 //метод ввода класса hours
 void hours::input() {
 	cout << "¬ведите кол-во отработанных за мес€ц часов(всего): ";
@@ -148,7 +132,6 @@ public:
 	subordinates();
 	int getamount();
 	float getasos();
-	void set(int a, float A);
 	void input();
 private:
 	int amount; //кол-во подчиненных
@@ -182,12 +165,6 @@ float subordinates::getasos() {
 	return this->asos;
 }
 
-//метод установки значений в классе subordinates
-void subordinates::set(int a, float A) {
-	amount = a;
-	asos = A;
-}
-
 //метод ввода класса subordinates
 void subordinates::input() {
 	cout << "¬ведите количество подчиненных сотрудника: ";
@@ -209,7 +186,6 @@ public:
 	string getjtitle();
 	int gethourlycost();
 	subordinates getsubs();
-	void set(string j, int h, subordinates s);
 	void input();
 private:
 	string jtitle; //наименование должности
@@ -251,12 +227,6 @@ int jobtitle::gethourlycost() {
 
 subordinates jobtitle::getsubs() {
 	return this->subs;
-}
-
-void jobtitle::set(string j, int h, subordinates s) {
-	jtitle = j;
-	hourlycost = h;
-	subs = s;
 }
 
 //метод ввода класса jobtitle
