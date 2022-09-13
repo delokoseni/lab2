@@ -15,6 +15,7 @@ public:
 	int getarmy();
 	float getmaternityleave();
 	void set(float w, int a, float m);
+	void input();
 private:
 	float workingyears; //кол-во реально отработанных лет
 	int army; //кол-во лет в армии, если сохран€лось рабочее место
@@ -62,6 +63,17 @@ void experience::set(float w, int a, float m) {
 	maternityleave = m;
 }
 
+//метод ввода класса experience
+void experience::input() {
+	cout << "¬ведите общий стаж (кол-во лет): ";
+	cin >> workingyears;
+	cout << "»з них в армии (кол-во лет): ";
+	cin >> army;
+	cout << "»з них в декретном отпуске(кол - во лет) :";
+	cin >> maternityleave;
+	workingyears = workingyears - army - maternityleave;
+}
+
 //ј“ƒ отработанные за мес€ц часы
 class hours {
 public:
@@ -72,6 +84,7 @@ public:
 	int getovertime();
 	int getweekends();
 	void set(int n, int o, int w);
+	void input();
 private:
 	int normal; //кол-во часов, отработанных по графику
 	int overtime; //кол-во часов, отработанных сверхурочно
@@ -117,6 +130,16 @@ void hours::set(int n , int o, int w) {
 	weekends = w;
 }
 
+//метод ввода класса hours
+void hours::input() {
+	cout << "¬ведите кол-во отработанных за мес€ц часов(всего): ";
+	cin >> normal;
+	cout << "¬ведите кол-во сверхурочных часов: ";
+	cin >> overtime;
+	cout << "¬ведите кол-во отработанных за мес€ц часов в выходные: ";
+	cin >> weekends;
+}
+
 //ј“ƒ подчиненные
 class subordinates {
 public:
@@ -126,6 +149,7 @@ public:
 	int getamount();
 	float getasos();
 	void set(int a, float A);
+	void input();
 private:
 	int amount; //кол-во подчиненных
 	float asos; //average seniority of subordinates - средний стаж подчиненных
@@ -164,6 +188,18 @@ void subordinates::set(int a, float A) {
 	asos = A;
 }
 
+//метод ввода класса subordinates
+void subordinates::input() {
+	cout << "¬ведите количество подчиненных сотрудника: ";
+	cin >> amount;
+	if (amount > 0) {
+		cout << "¬ведите средний стаж подчиненных сотрудника: ";
+		cin >> asos;
+	}
+	else
+		asos = 0;
+}
+
 //ј“ƒ должность
 class jobtitle {
 public:
@@ -174,6 +210,7 @@ public:
 	int gethourlycost();
 	subordinates getsubs();
 	void set(string j, int h, subordinates s);
+	void input();
 private:
 	string jtitle; //наименование должности
 	int hourlycost; //стоимость часа работы
@@ -220,6 +257,15 @@ void jobtitle::set(string j, int h, subordinates s) {
 	jtitle = j;
 	hourlycost = h;
 	subs = s;
+}
+
+//метод ввода класса jobtitle
+void jobtitle::input() {
+	cout << "¬ведите должность: ";
+	getline(cin, jtitle);
+	cout << "¬ведите стоимость часа работы: ";
+	cin >> hourlycost;
+	subs.input();
 }
 
 //ј“ƒ —отрудник
@@ -299,45 +345,12 @@ void employee::shortoutput() {
 
 //метод ввода employee
 void employee::input() {
-	experience exp;
-	hours hour;
-	jobtitle jt;
-	subordinates subs;
-	int army, normal, overtime, weekends, hourlycost, amount, asos = 0;
-	float workingyears, maternityleave;
-	string jtitle;
 	cout << "¬ведите ID: ";
 	cin >> this->id;
-	cout << "¬ведите общий стаж (кол-во лет): ";
-	cin >> workingyears;
-	cout << "»з них в армии (кол-во лет): ";
-	cin >> army;
-	cout << "»з них в декретном отпуске(кол - во лет) :";
-	cin >> maternityleave;
-	exp.set(workingyears - army - maternityleave, army, maternityleave);
-	this->exp = exp;
-	cout << "¬ведите кол-во отработанных за мес€ц часов(всего): ";
-	cin >> normal;
-	cout << "¬ведите кол-во сверхурочных часов: ";
-	cin >> overtime;
-	cout << "¬ведите кол-во отработанных за мес€ц часов в выходные: ";
-	cin >> weekends;
-	hour.set(normal - overtime - weekends, overtime, weekends);
-	this->hour = hour;
+	exp.input();
+	hour.input();
 	while (getchar() != '\n');
-	cout << "¬ведите должность: ";
-	getline(cin, jtitle);
-	cout << "¬ведите стоимость часа работы: ";
-	cin >> hourlycost;
-	cout << "¬ведите количество подчиненных сотрудника: ";
-	cin >> amount;
-	if (amount > 0) {
-		cout << "¬ведите средний стаж подчиненных сотрудника: ";
-		cin >> asos;
-	}
-	subs.set(amount, asos);
-	jt.set(jtitle, hourlycost, subs);
-	this->jt = jt;
+	jt.input();
 }
 
 //метод подсчета зарплаты

@@ -8,7 +8,7 @@ int main()
     SetConsoleOutputCP(1251);
     int size, i;
     char c;
-    employee human1, *men[5];
+    employee human1, *men[3];
     employee human2(2);
     experience exp(1);
     hours hour(1);
@@ -23,19 +23,25 @@ int main()
         human3.shortoutput();
         cout << "Введите размер массива: ";
         cin >> size;
-        employee* arr = new employee[size];
+        employee* arr = new employee[size]; //динамический массив объектов класса
         for (i = 0; i < size; i++) {
             (arr + i)->input();
-            (arr + i)->shortoutput();
+            (arr + i)->output();
             cout << "Премия: " << (*arr).getpremium(140) << endl;
         }
         delete[] arr;
         employee* human = new employee;
         *human = human1;
-        for (i = 0; i < 5; i++)
-            men[i] = human;
-        men[0]->output();
+        human1.shortoutput();
+        (*human).shortoutput();
         delete human;
+        //работа с массивом динамических объектов класса
+        men[0] = &human1;
+        men[1] = &human2;
+        men[2] = &human3;
+        for (i = 0; i < 3; i++) {
+            men[i]->shortoutput();
+        }
         printf("Для повтора программы нажмите любую клавишу.\n");
         printf("Для выхода из программы нажмите ESC.\n");
         c = _getch();
