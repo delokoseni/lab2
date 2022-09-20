@@ -5,14 +5,13 @@
 //функция ввода структуры experience
 Experience inputexp() {
 	Experience exp;
-	int army;
-	float workingyears, maternityleave;
+	int army, workingyears, maternityleave;
 	printf("Введите общий стаж (кол-во лет): ");
-	scanf("%f", &workingyears);
+	scanf("%d", &workingyears);
 	printf("Из них в армии (кол-во лет): ");
 	scanf("%d", &army);
 	printf("Из них в декретном отпуске (кол-во лет): ");
-	scanf("%f", &maternityleave);
+	scanf("%d", &maternityleave);
 	if (army > 0)
 		workingyears -= army;
 	if (maternityleave > 0)
@@ -24,7 +23,7 @@ Experience inputexp() {
 }
 
 //функция инициализации
-Experience expinitiation(float workingyears, int army, float maternityleave) {
+Experience expinitiation(int workingyears, int army, int maternityleave) {
 	Experience exp;
 	exp.workingyears = workingyears;
 	exp.army = army;
@@ -34,7 +33,9 @@ Experience expinitiation(float workingyears, int army, float maternityleave) {
 
 //функция вывода
 void expoutput(Experience exp) {
-	printf("Стаж (отработано лет): %.1f\n", exp.workingyears);
+	printf("Стаж (отработано лет): %d\n", exp.workingyears);
 	printf("Стаж (кол-во лет в армии): %d\n", exp.army);
-	printf("Стаж (кол-во лет в декретном отпуске): %.1f\n", exp.maternityleave);
+	printf("Стаж (кол-во лет в декретном отпуске): %d\n", exp.maternityleave);
 }
+
+//функция возвращающая общий стаж

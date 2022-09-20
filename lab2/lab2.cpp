@@ -13,7 +13,6 @@ int main()
         human1 = initiation(117, 5, 0, 0, 36, 4, 0, str, 140, 0, 0);
         output(human1);
         human1 = input();
-        shortoutput(human1);
         printf("Положена ли премия: %d\n", getpremium(human1, 140));
         printf("Зарплата: %d\n", getsalary(human1, 200, 210, 5, 1, 2, 1));
         printf("Для повтора программы нажмите любую клавишу.\n");

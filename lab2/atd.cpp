@@ -13,7 +13,7 @@ Subordinates inputsubs();
 Jobtitle inputjt();
 Hours inputhour();
 Experience inputexp();
-Experience expinitiation(float workingyears, int army, float maternityleave);
+Experience expinitiation(int workingyears, int army, int maternityleave);
 Hours hourinitiation(int normal, int overtime, int weekends);
 Jobtitle jtinitiation(char jtitle[], int hourlycost, int amount, float asos);
 void expoutput(Experience exp);
@@ -51,14 +51,6 @@ void output(Employee human) {
 	expoutput(human.exp);
 	houroutput(human.hour);
 	jtoutput(human.jt);
-}
-
-//функция короткого вывода
-void shortoutput(Employee human) {
-	printf("ID: %d\n", human.id);
-	printf("Стаж: %.1f\n", human.exp.workingyears + human.exp.army + human.exp.maternityleave);
-	printf("Отработано часов за месяц: %d\n", human.hour.normal + human.hour.overtime + human.hour.weekends);
-	printf("Должность: %s\n", human.jt.jtitle);
 }
 
 //функция подсчета зарплаты
