@@ -139,10 +139,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="experience.cpp" />
+    <ClCompile Include="hours.cpp" />
+    <ClCompile Include="jobtitle.cpp" />
     <ClCompile Include="lab2.cpp" />
+    <ClCompile Include="subordinates.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="atd.h" />
+    <ClInclude Include="experience.h" />
+    <ClInclude Include="hours.h" />
+    <ClInclude Include="jobtitle.h" />
+    <ClInclude Include="subordinates.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
