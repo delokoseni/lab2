@@ -16,7 +16,6 @@ public:
 	employee(int x);
 	employee();
 	void output();
-	void shortoutput();
 	void input();
 	int getsalary(int overtimecost, int weekendscost, int exppercent, \
 		int expstatus, int subspercent, int subsstatus);

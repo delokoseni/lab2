@@ -38,16 +38,6 @@ void employee::output() {
 	jt.output();
 }
 
-//метод короткого вывода employee
-void employee::shortoutput() {
-	//cout << "ID: " << this->id << endl;
-	//cout << "Стаж: " << this->exp.getworkingyears() \
-	//	+ this->exp.getarmy() + this->exp.getmaternityleave() << endl;
-	//cout << "Отработано часов за месяц: " << this->hour.getnormal() \
-	//	+ this->hour.getovertime() + this->hour.getweekends() << endl;
-	//cout << "Должность: " << this->jt.getjtitle() << endl << endl;
-}
-
 //метод ввода employee
 void employee::input() {
 	cout << "Введите ID: ";

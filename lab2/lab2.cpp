@@ -20,7 +20,6 @@ int main()
         human3.output();
         cout << "Зарплата: " << human3.getsalary(200, 220, 2, 1, 5, 1) << endl;
         cout << "Премия: " << human3.getpremium(200) << endl;
-        human3.shortoutput();
         cout << "Введите размер массива: ";
         cin >> size;
         employee* arr = new employee[size]; //динамический массив объектов класса
@@ -32,15 +31,15 @@ int main()
         delete[] arr;
         employee* human = new employee;
         *human = human1;
-        human1.shortoutput();
-        (*human).shortoutput();
+        human1.output();
+        (*human).output();
         delete human;
         //работа с массивом динамических объектов класса
         men[0] = &human1;
         men[1] = &human2;
         men[2] = &human3;
         for (i = 0; i < 3; i++) {
-            men[i]->shortoutput();
+            men[i]->output();
         }
         printf("Для повтора программы нажмите любую клавишу.\n");
         printf("Для выхода из программы нажмите ESC.\n");
