@@ -13,23 +13,18 @@ Subordinates inputsubs();
 Jobtitle inputjt();
 Hours inputhour();
 Experience inputexp();
+Experience expinitiation(float workingyears, int army, float maternityleave);
+Hours hourinitiation(int normal, int overtime, int weekends);
+Jobtitle jtinitiation(char jtitle[], int hourlycost, int amount, float asos);
 
 //функция инициализации
 Employee initiation(int id, float workingyears, int army, float maternityleave,
-	int normal, int overtime, int weekends, char jtitle[], int hourlycost, int amount, float ASoS) {
+	int normal, int overtime, int weekends, char jtitle[], int hourlycost, int amount, float asos) {
 	Employee human;
-	human.jt.jtitle = (char*)malloc(sizeof(char));
 	human.id = id;
-	human.exp.workingyears = workingyears;
-	human.exp.army = army;
-	human.exp.maternityleave = maternityleave;
-	human.hour.normal = normal;
-	human.hour.overtime = overtime;
-	human.hour.weekends = weekends;
-	strcpy(human.jt.jtitle, jtitle);
-	human.jt.hourlycost = hourlycost;
-	human.jt.subs.amount = amount;
-	human.jt.subs.asos = ASoS;
+	human.exp = expinitiation(workingyears, army, maternityleave);
+	human.hour = hourinitiation(normal, overtime, weekends);
+	human.jt = jtinitiation(jtitle, hourlycost, amount, asos);
 	return human;
 }
 

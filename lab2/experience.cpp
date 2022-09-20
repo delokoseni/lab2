@@ -22,3 +22,11 @@ Experience inputexp() {
 	exp.workingyears = workingyears;
 	return exp;
 }
+
+Experience expinitiation(float workingyears, int army, float maternityleave) {
+	Experience exp;
+	exp.workingyears = workingyears;
+	exp.army = army;
+	exp.maternityleave = maternityleave;
+	return exp;
+}

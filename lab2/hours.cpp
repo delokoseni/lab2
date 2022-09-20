@@ -21,3 +21,11 @@ Hours inputhour() {
 	hour.weekends = weekends;
 	return hour;
 }
+
+Hours hourinitiation(int normal, int overtime, int weekends) {
+	Hours hour;
+	hour.normal = normal;
+	hour.overtime = overtime;
+	hour.weekends = weekends;
+	return hour;
+}

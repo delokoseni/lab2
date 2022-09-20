@@ -5,6 +5,7 @@
 #include "jobtitle.h"
 
 Subordinates inputsubs();
+Subordinates subsinitiation(int amount, float asos);
 
 //функция ввода структуры jobtitle
 Jobtitle inputjt() {
@@ -25,5 +26,15 @@ Jobtitle inputjt() {
 	jt.hourlycost = hourlycost;
 	jt.jtitle = jtitle;
 	jt.subs = inputsubs();
+	return jt;
+}
+
+//функция инициализации
+Jobtitle jtinitiation(char jtitle[], int hourlycost, int amount, float asos) {
+	Jobtitle jt;
+	jt.jtitle = (char*)malloc(sizeof(char));
+	jt.subs = subsinitiation(amount, asos);
+	strcpy(jt.jtitle, jtitle);
+	jt.hourlycost = hourlycost;
 	return jt;
 }

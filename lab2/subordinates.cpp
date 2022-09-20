@@ -19,3 +19,11 @@ Subordinates inputsubs() {
 	subs.asos = asos;
 	return subs;
 }
+
+//функция инициализации
+Subordinates subsinitiation(int amount, float asos) {
+	Subordinates subs;
+	subs.amount = amount;
+	subs.asos = asos;
+	return subs;
+}
