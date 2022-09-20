@@ -16,6 +16,9 @@ Experience inputexp();
 Experience expinitiation(float workingyears, int army, float maternityleave);
 Hours hourinitiation(int normal, int overtime, int weekends);
 Jobtitle jtinitiation(char jtitle[], int hourlycost, int amount, float asos);
+void expoutput(Experience exp);
+void houroutput(Hours hour);
+void jtoutput(Jobtitle jt);
 
 //функция инициализации
 Employee initiation(int id, float workingyears, int army, float maternityleave,
@@ -45,16 +48,9 @@ Employee input() {
 //функция полного вывода
 void output(Employee human) {
 	printf("ID: %d\n", human.id);
-	printf("Стаж (отработано лет): %.1f\n", human.exp.workingyears);
-	printf("Стаж (кол-во лет в армии): %d\n", human.exp.army);
-	printf("Стаж (кол-во лет в декретном отпуске): %.1f\n", human.exp.maternityleave);
-	printf("Отработано часов за месяц(по графику): %d\n", human.hour.normal);
-	printf("Отработано часов за месяц(сверхурочно): %d\n", human.hour.overtime);
-	printf("Отработано часов за месяц(в выходные дни): %d\n", human.hour.weekends);
-	printf("Должность: %s\n", human.jt.jtitle);
-	printf("Стоимость часа работы: %d\n", human.jt.hourlycost);
-	printf("Кол-во подчиненных: %d\n", human.jt.subs.amount);
-	printf("Средний стаж подчиненных: %.1f\n", human.jt.subs.asos);
+	expoutput(human.exp);
+	houroutput(human.hour);
+	jtoutput(human.jt);
 }
 
 //функция короткого вывода

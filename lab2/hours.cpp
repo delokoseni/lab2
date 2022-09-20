@@ -22,10 +22,18 @@ Hours inputhour() {
 	return hour;
 }
 
+
+//функция вывода
 Hours hourinitiation(int normal, int overtime, int weekends) {
 	Hours hour;
 	hour.normal = normal;
 	hour.overtime = overtime;
 	hour.weekends = weekends;
 	return hour;
+}
+
+void houroutput(Hours hour) {
+	printf("Отработано часов за месяц(по графику): %d\n", hour.normal);
+	printf("Отработано часов за месяц(сверхурочно): %d\n", hour.overtime);
+	printf("Отработано часов за месяц(в выходные дни): %d\n", hour.weekends);
 }

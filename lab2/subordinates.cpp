@@ -27,3 +27,9 @@ Subordinates subsinitiation(int amount, float asos) {
 	subs.asos = asos;
 	return subs;
 }
+
+//функция вывода
+void subsoutput(Subordinates subs) {
+	printf("Кол-во подчиненных: %d\n", subs.amount);
+	printf("Средний стаж подчиненных: %.1f\n", subs.asos);
+}

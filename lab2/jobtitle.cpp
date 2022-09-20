@@ -6,6 +6,7 @@
 
 Subordinates inputsubs();
 Subordinates subsinitiation(int amount, float asos);
+void subsoutput(Subordinates subs);
 
 //функция ввода структуры jobtitle
 Jobtitle inputjt() {
@@ -37,4 +38,11 @@ Jobtitle jtinitiation(char jtitle[], int hourlycost, int amount, float asos) {
 	strcpy(jt.jtitle, jtitle);
 	jt.hourlycost = hourlycost;
 	return jt;
+}
+
+//функция вывода
+void jtoutput(Jobtitle jt) {
+	printf("Должность: %s\n", jt.jtitle);
+	printf("Стоимость часа работы: %d\n", jt.hourlycost);
+	subsoutput(jt.subs);
 }

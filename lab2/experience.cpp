@@ -23,10 +23,18 @@ Experience inputexp() {
 	return exp;
 }
 
+//функция инициализации
 Experience expinitiation(float workingyears, int army, float maternityleave) {
 	Experience exp;
 	exp.workingyears = workingyears;
 	exp.army = army;
 	exp.maternityleave = maternityleave;
 	return exp;
+}
+
+//функция вывода
+void expoutput(Experience exp) {
+	printf("Стаж (отработано лет): %.1f\n", exp.workingyears);
+	printf("Стаж (кол-во лет в армии): %d\n", exp.army);
+	printf("Стаж (кол-во лет в декретном отпуске): %.1f\n", exp.maternityleave);
 }
