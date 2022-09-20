@@ -1,35 +1,8 @@
-#define _CRT_SECURE_NO_WARNINGS
 #pragma once
-#include <string.h>
-#include <stdio.h>
-#include <iostream>
-
-//АТД стаж
-typedef struct experience {
-	float workingyears; //кол-во реально отработанных лет
-	int army; //кол-во лет в армии, если сохранялось рабочее место
-	float maternityleave; //кол-во лет в декретном отпуске, если сохранялось рабочее место
-}Experience;
-
-//АТД отработанные за месяц часы
-typedef struct hours {
-	int normal; //кол-во часов, отработанных по графику
-	int overtime; //кол-во часов, отработанных сверхурочно
-	int weekends; //кол - во часов, отработанных в выходные дни
-}Hours;
-
-//АТД подчиненные
-typedef struct subordinates {
-	int amount; //кол-во подчиненных
-	float asos; //average seniority of subordinates - средний стаж подчиненных
-}Subordinates;
-
-//АТД должность
-typedef struct jobtitle {
-	char* jtitle; //наименование должности
-	int hourlycost; //стоимость часа работы
-	Subordinates subs; //подчиненные
-}Jobtitle;
+#include "experience.h"
+#include "hours.h"
+#include "subordinates.h"
+#include "jobtitle.h"
 
 //АТД Сотрудник
 typedef struct employee {
@@ -40,168 +13,12 @@ typedef struct employee {
 
 } Employee;
 
-//функция инициализации
 Employee initiation(int id, float workingyears, int army, float maternityleave,
-	int normal, int overtime, int weekends, char jtitle[], int hourlycost, int amount, float ASoS) {
-	Employee human;
-	human.jt.jtitle = (char*)malloc(sizeof(char));
-	human.id = id;
-	human.exp.workingyears = workingyears;
-	human.exp.army = army;
-	human.exp.maternityleave = maternityleave;
-	human.hour.normal = normal;
-	human.hour.overtime = overtime;
-	human.hour.weekends = weekends;
-	strcpy(human.jt.jtitle, jtitle);
-	human.jt.hourlycost = hourlycost;
-	human.jt.subs.amount = amount;
-	human.jt.subs.asos = ASoS;
-	return human;
-}
-
-//функция ввода структуры subordinates
-Subordinates inputsubs() {
-	Subordinates subs;
-	int amount;
-	float asos;
-	printf("Введите количество подчиненных сотрудника: ");
-	scanf("%d", &amount);
-	if (amount > 0) {
-		printf("Введите средний стаж подчиненных сотрудника: ");
-		scanf("%f", &asos);
-	}
-	else
-		asos = 0;
-	subs.amount = amount;
-	subs.asos = asos;
-	return subs;
-}
-
-//функция ввода структуры jobtitle
-Jobtitle inputjt() {
-	Jobtitle jt;
-	int hourlycost;
-	long lenghtofjtitle = 1; //длина jtitle + 1
-	char* jtitle, c;
-	jtitle = (char*)malloc(sizeof(char));
-	printf("Введите должность: ");
-	while ((c = getchar()) != '\n') {
-		jtitle[lenghtofjtitle - 1] = c;
-		lenghtofjtitle++;
-		jtitle = (char*)realloc(jtitle, lenghtofjtitle);
-	}
-	jtitle[lenghtofjtitle - 1] = '\0';
-	printf("Введите стоимость часа работы: ");
-	scanf("%d", &hourlycost);
-	jt.hourlycost = hourlycost;
-	jt.jtitle = jtitle;
-	jt.subs = inputsubs();
-	return jt;
-}
-
-//функция ввода структуры hours
-Hours inputhour() {
-	Hours hour;
-	int normal, overtime, weekends;
-	printf("Введите кол-во отработанных за месяц часов: ");
-	scanf("%d", &normal);
-	printf("Введите кол-во сверхурочных часов : ");
-	scanf("%d", &overtime);
-	printf("Введите кол-во отработанных за месяц часов в выходные: ");
-	scanf("%d", &weekends);
-	if (overtime > 0)
-		normal -= overtime;
-	if (weekends > 0)
-		normal -= weekends;
-	hour.normal = normal;
-	hour.overtime = overtime;
-	hour.weekends = weekends;
-	return hour;
-}
-
-//функция ввода структуры experience
-Experience inputexp() {
-	Experience exp;
-	int army;
-	float workingyears, maternityleave;
-	printf("Введите общий стаж (кол-во лет): ");
-	scanf("%f", &workingyears);
-	printf("Из них в армии (кол-во лет): ");
-	scanf("%d", &army);
-	printf("Из них в декретном отпуске (кол-во лет): ");
-	scanf("%f", &maternityleave);
-	if (army > 0)
-		workingyears -= army;
-	if (maternityleave > 0)
-		workingyears -= maternityleave;
-	exp.army = army;
-	exp.maternityleave = maternityleave;
-	exp.workingyears = workingyears;
-	return exp;
-}
-
-//функция ввода employee
-Employee input() {
-	Employee human;
-	int id;
-	printf("Введите ID: ");
-	scanf("%d", &id);
-	human.id = id;
-	human.exp = inputexp();
-	human.hour = inputhour();
-	while (getchar() != '\n');
-	human.jt = inputjt();
-	return human;
-}
-
-//функция полного вывода
-void output(Employee human) {
-	printf("ID: %d\n", human.id);
-	printf("Стаж (отработано лет): %.1f\n", human.exp.workingyears);
-	printf("Стаж (кол-во лет в армии): %d\n", human.exp.army);
-	printf("Стаж (кол-во лет в декретном отпуске): %.1f\n", human.exp.maternityleave);
-	printf("Отработано часов за месяц(по графику): %d\n", human.hour.normal);
-	printf("Отработано часов за месяц(сверхурочно): %d\n", human.hour.overtime);
-	printf("Отработано часов за месяц(в выходные дни): %d\n", human.hour.weekends);
-	printf("Должность: %s\n", human.jt.jtitle);
-	printf("Стоимость часа работы: %d\n", human.jt.hourlycost);
-	printf("Кол-во подчиненных: %d\n", human.jt.subs.amount);
-	printf("Средний стаж подчиненных: %.1f\n", human.jt.subs.asos);
-}
-
-//функция короткого вывода
-void shortoutput(Employee human) {
-	printf("ID: %d\n", human.id);
-	printf("Стаж: %.1f\n", human.exp.workingyears + human.exp.army + human.exp.maternityleave);
-	printf("Отработано часов за месяц: %d\n", human.hour.normal + human.hour.overtime + human.hour.weekends);
-	printf("Должность: %s\n", human.jt.jtitle);
-}
-
-//функция подсчета зарплаты
+	int normal, int overtime, int weekends, char jtitle[], int hourlycost, int amount, float ASoS);
+Employee input();
+void output(Employee human);
+void shortoutput(Employee human);
+void shortoutput(Employee human);
 int getsalary(Employee human, int overtimecost, int weekendscost, int exppercent, \
-	int expstatus, int subspercent, int subsstatus) {
-	int salary = 0; //зарплата
-	float experience = human.exp.workingyears + human.exp.army + human.exp.maternityleave;
-	salary += human.hour.normal * human.jt.hourlycost;
-	salary += human.hour.overtime * overtimecost;
-	salary += human.hour.weekends * weekendscost;
-	//учет стажа
-	if (expstatus == true)
-		salary += salary / 100 * exppercent * experience;
-	else
-		salary += salary / 100 * exppercent * human.exp.workingyears;
-	//учет наличия подчиненных
-	if (human.jt.subs.amount && subsstatus)
-		salary += human.jt.subs.amount * salary / 100 * subspercent / human.jt.subs.asos;
-	else
-		salary += human.jt.subs.amount * salary / 100 * subspercent;
-	return salary;
-}
-
-//функция подсчета премии (положена или нет)
-int getpremium(Employee human, int houramount) {
-	if (human.hour.normal + human.hour.overtime + human.hour.weekends < houramount)
-		return 0;
-	else
-		return 1;
-}
+	int expstatus, int subspercent, int subsstatus);
+int getpremium(Employee human, int houramount);

@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="atd.cpp" />
     <ClCompile Include="experience.cpp" />
     <ClCompile Include="hours.cpp" />
     <ClCompile Include="jobtitle.cpp" />
