@@ -27,19 +27,6 @@ jobtitle::jobtitle() {
 	subs = s;
 }
 
-//методы получения данных из класса jobtitle
-string jobtitle::getjtitle() {
-	return this->jtitle;
-}
-
-int jobtitle::gethourlycost() {
-	return this->hourlycost;
-}
-
-subordinates jobtitle::getsubs() {
-	return this->subs;
-}
-
 //метод ввода класса jobtitle
 void jobtitle::input() {
 	cout << "Введите должность: ";
@@ -47,4 +34,11 @@ void jobtitle::input() {
 	cout << "Введите стоимость часа работы: ";
 	cin >> hourlycost;
 	subs.input();
+}
+
+//метод вывода
+void jobtitle::output() {
+	cout << "Должность: " << jtitle << endl;
+	cout << "Стоимость часа работы: " << hourlycost << endl;
+	subs.output();
 }

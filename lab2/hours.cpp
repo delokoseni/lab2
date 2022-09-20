@@ -23,17 +23,6 @@ hours::hours() {
 	weekends = 0;
 }
 
-//методы получени€ данных из класса hours
-int hours::getnormal() {
-	return this->normal;
-}
-int hours::getovertime() {
-	return this->overtime;
-}
-int hours::getweekends() {
-	return this->weekends;
-}
-
 //метод ввода класса hours
 void hours::input() {
 	cout << "¬ведите кол-во отработанных за мес€ц часов(всего): ";
@@ -42,4 +31,11 @@ void hours::input() {
 	cin >> overtime;
 	cout << "¬ведите кол-во отработанных за мес€ц часов в выходные: ";
 	cin >> weekends;
+}
+
+//метод вывода
+void hours::output() {
+	cout << "ќтработано часов за мес€ц(по графику): " << normal << endl;
+	cout << "ќтработано часов за мес€ц(сверхурочно): " << overtime << endl;
+	cout << "ќтработано часов за мес€ц(в выходные дни): " << weekends << endl;
 }

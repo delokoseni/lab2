@@ -23,19 +23,6 @@ experience::experience() {
 	maternityleave = 0;
 }
 
-//методы получения данных из класса experience
-float experience::getworkingyears() {
-	return this->workingyears;
-}
-
-int experience::getarmy() {
-	return this->army;
-}
-
-float experience::getmaternityleave() {
-	return this->maternityleave;
-}
-
 //метод ввода класса experience
 void experience::input() {
 	cout << "Введите общий стаж (кол-во лет): ";
@@ -45,4 +32,11 @@ void experience::input() {
 	cout << "Из них в декретном отпуске(кол - во лет) :";
 	cin >> maternityleave;
 	workingyears = workingyears - army - maternityleave;
+}
+
+//метод вывода
+void experience::output() {
+	cout << "Стаж (отработано лет): " << workingyears << endl;
+	cout << "Стаж (кол-во лет в армии): " << army << endl;
+	cout << "Стаж (кол-во лет в декретном отпуске): " << maternityleave << endl;
 }

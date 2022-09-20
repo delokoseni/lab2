@@ -32,28 +32,20 @@ employee::employee() {
 
 //метод полного вывода employee
 void employee::output() {
-	subordinates s = this->jt.getsubs();
 	cout << "ID: " << this->id << endl;
-	cout << "Стаж (отработано лет): " << this->exp.getworkingyears() << endl;
-	cout << "Стаж (кол-во лет в армии): " << this->exp.getarmy() << endl;
-	cout << "Стаж (кол-во лет в декретном отпуске): " << this->exp.getmaternityleave() << endl;
-	cout << "Отработано часов за месяц(по графику): " << this->hour.getnormal() << endl;
-	cout << "Отработано часов за месяц(сверхурочно): " << this->hour.getovertime() << endl;
-	cout << "Отработано часов за месяц(в выходные дни): " << this->hour.getweekends() << endl;
-	cout << "Должность: " << this->jt.getjtitle() << endl;
-	cout << "Стоимость часа работы: " << this->jt.gethourlycost() << endl;
-	cout << "Кол-во подчиненных: " << s.getamount() << endl;
-	cout << "Средний стаж подчиненных: " << s.getasos() << endl << endl;
+	exp.output();
+	hour.output();
+	jt.output();
 }
 
 //метод короткого вывода employee
 void employee::shortoutput() {
-	cout << "ID: " << this->id << endl;
-	cout << "Стаж: " << this->exp.getworkingyears() \
-		+ this->exp.getarmy() + this->exp.getmaternityleave() << endl;
-	cout << "Отработано часов за месяц: " << this->hour.getnormal() \
-		+ this->hour.getovertime() + this->hour.getweekends() << endl;
-	cout << "Должность: " << this->jt.getjtitle() << endl << endl;
+	//cout << "ID: " << this->id << endl;
+	//cout << "Стаж: " << this->exp.getworkingyears() \
+	//	+ this->exp.getarmy() + this->exp.getmaternityleave() << endl;
+	//cout << "Отработано часов за месяц: " << this->hour.getnormal() \
+	//	+ this->hour.getovertime() + this->hour.getweekends() << endl;
+	//cout << "Должность: " << this->jt.getjtitle() << endl << endl;
 }
 
 //метод ввода employee
@@ -70,29 +62,29 @@ void employee::input() {
 int employee::getsalary(int overtimecost, int weekendscost, int exppercent, \
 	int expstatus, int subspercent, int subsstatus) {
 	int salary = 0; //зарплата
-	float experience = this->exp.getworkingyears() + this->exp.getarmy() + this->exp.getmaternityleave();
-	salary += this->hour.getnormal() * this->jt.gethourlycost();
-	salary += this->hour.getovertime() * overtimecost;
-	salary += this->hour.getweekends() * weekendscost;
-	subordinates subs;
-	//учет стажа
-	if (expstatus == true)
-		salary += salary / 100 * exppercent * experience;
-	else
-		salary += salary / 100 * exppercent * this->exp.getworkingyears();
-	//учет наличия подчиненных
-	subs = this->jt.getsubs();
-	if (subs.getamount() && subsstatus)
-		salary += subs.getamount() * salary / 100 * subspercent / subs.getasos();
-	else
-		salary += subs.getamount() * salary / 100 * subspercent;
+	//float experience = this->exp.getworkingyears() + this->exp.getarmy() + this->exp.getmaternityleave();
+	//salary += this->hour.getnormal() * this->jt.gethourlycost();
+	//salary += this->hour.getovertime() * overtimecost;
+	//salary += this->hour.getweekends() * weekendscost;
+	//subordinates subs;
+	////учет стажа
+	//if (expstatus == true)
+	//	salary += salary / 100 * exppercent * experience;
+	//else
+	//	salary += salary / 100 * exppercent * this->exp.getworkingyears();
+	////учет наличия подчиненных
+	//subs = this->jt.getsubs();
+	//if (subs.getamount() && subsstatus)
+	//	salary += subs.getamount() * salary / 100 * subspercent / subs.getasos();
+	//else
+	//	salary += subs.getamount() * salary / 100 * subspercent;
 	return salary;
 }
 
 //метод подсчета премии (положена или нет)
 int employee::getpremium(int houramount) {
-	if (this->hour.getnormal() + this->hour.getovertime() + this->hour.getweekends() < houramount)
+	/*if (this->hour.getnormal() + this->hour.getovertime() + this->hour.getweekends() < houramount)
 		return 0;
-	else
+	else*/
 		return 1;
 }

@@ -9,10 +9,8 @@ public:
 	jobtitle(string j, int h, subordinates s);
 	jobtitle(int x);
 	jobtitle();
-	string getjtitle();
-	int gethourlycost();
-	subordinates getsubs();
 	void input();
+	void output();
 private:
 	string jtitle; //наименование должности
 	int hourlycost; //стоимость часа работы

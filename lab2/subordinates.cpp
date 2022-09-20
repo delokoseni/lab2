@@ -21,15 +21,6 @@ subordinates::subordinates() {
 	asos = 0;
 }
 
-//методы получения данных из класса subordinates
-int subordinates::getamount() {
-	return this->amount;
-}
-
-float subordinates::getasos() {
-	return this->asos;
-}
-
 //метод ввода класса subordinates
 void subordinates::input() {
 	cout << "Введите количество подчиненных сотрудника: ";
@@ -40,4 +31,10 @@ void subordinates::input() {
 	}
 	else
 		asos = 0;
+}
+
+//метод вывода
+void subordinates::output() {
+	cout << "Кол-во подчиненных: " << amount << endl;
+	cout << "Средний стаж подчиненных: " << asos << endl << endl;
 }
