@@ -38,3 +38,20 @@ void subordinates::output() {
 	cout << "Кол-во подчиненных: " << amount << endl;
 	cout << "Средний стаж подчиненных: " << asos << endl << endl;
 }
+
+//метод подсчета среднего стажа
+float subordinates::averageseniority(int number) {
+	float *arr = new float[2 *number];
+	int i;
+	float avesen = 0;
+	cout << "Вводите сначала целое число лет стажа, затем месяцы!" << endl;
+	for (i = 0; i < 2 * number; i++) {
+		cin >> *(arr + i);
+	}
+	for (i = 0; i < 2 * number; i+=2) {
+		avesen += *(arr + i);
+		avesen += *(arr + i + 1) / 12;
+	}
+	avesen = avesen / number;
+	return avesen;
+}

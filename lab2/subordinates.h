@@ -9,6 +9,7 @@ public:
 	subordinates();
 	void input();
 	void output();
+	float averageseniority(int number);
 private:
 	int amount; //кол-во подчиненных
 	float asos; //average seniority of subordinates - средний стаж подчиненных
