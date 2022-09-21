@@ -74,8 +74,8 @@ int employee::getsalary(int overtimecost, int weekendscost, int exppercent, \
 
 //метод подсчета премии (положена или нет)
 int employee::getpremium(int houramount) {
-	/*if (this->hour.getnormal() + this->hour.getovertime() + this->hour.getweekends() < houramount)
+	if (hour.normal + hour.overtime + hour.weekends < houramount)
 		return 0;
-	else*/
+	else
 		return 1;
 }
