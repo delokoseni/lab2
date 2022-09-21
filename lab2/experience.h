@@ -8,6 +8,7 @@ public:
 	experience();
 	void input();
 	void output();
+	float monthstodecimal(int years, float month);
 private:
 	float workingyears; //кол-во реально отработанных лет
 	int army; //кол-во лет в армии, если сохранялось рабочее место

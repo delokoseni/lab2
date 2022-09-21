@@ -40,3 +40,10 @@ void experience::output() {
 	cout << "Стаж (кол-во лет в армии): " << army << endl;
 	cout << "Стаж (кол-во лет в декретном отпуске): " << maternityleave << endl;
 }
+
+//метод приведения месяцев стажа к десятичному виду
+float experience::monthstodecimal(int years, float month) {
+	float exp;
+	exp = years + month / 12;
+	return exp;
+};
