@@ -9,6 +9,7 @@ public:
 	hours();
 	void input();
 	void output();
+	int allhours();
 private:
 	int normal; //кол-во часов, отработанных по графику
 	int overtime; //кол-во часов, отработанных сверхурочно

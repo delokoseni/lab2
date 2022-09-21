@@ -39,3 +39,12 @@ void hours::output() {
 	cout << "ќтработано часов за мес€ц(сверхурочно): " << overtime << endl;
 	cout << "ќтработано часов за мес€ц(в выходные дни): " << weekends << endl;
 }
+
+//метод получени€ отработанных за мес€ц часов
+int hours::allhours() {
+	int all = 0;
+	all += normal;
+	all += overtime;
+	all += weekends;
+	return all;
+}
