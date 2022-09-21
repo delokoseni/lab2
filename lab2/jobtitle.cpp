@@ -42,3 +42,11 @@ void jobtitle::output() {
 	cout << "Стоимость часа работы: " << hourlycost << endl;
 	subs.output();
 }
+
+//метод сравнения зарплаты с заданной
+float jobtitle::comparisonhc(float hcost) {
+	float percent;
+	float d = hourlycost;
+	percent = d / (hcost / 100) - 100;
+	return percent;
+}

@@ -16,6 +16,7 @@ int main()
     experience exp(1);
     hours hour(1);
     jobtitle jt(1);
+    jobtitle jj(200);
     employee human3(1, exp, hour, jt);
     subordinates s;
     human1.output();
@@ -38,6 +39,7 @@ int main()
     (*human).output();
     delete human;
     avesen = s.averageseniority(4);
+    avesen = jj.comparisonhc(180);
     cout << avesen << endl;
     //работа с массивом динамических объектов класса
     men[0] = &human1;

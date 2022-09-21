@@ -12,6 +12,7 @@ public:
 	jobtitle();
 	void input();
 	void output();
+	float comparisonhc(float hcost);
 private:
 	string jtitle; //наименование должности
 	int hourlycost; //стоимость часа работы
