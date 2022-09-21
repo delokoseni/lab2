@@ -5,6 +5,7 @@ using namespace std;
 
 class jobtitle
 {
+	friend class employee;
 public:
 	jobtitle(string j, int h, subordinates s);
 	jobtitle(int x);

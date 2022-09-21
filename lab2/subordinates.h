@@ -1,6 +1,8 @@
 #pragma once
+
 class subordinates
 {
+	friend class employee;
 public:
 	subordinates(int a, float A);
 	subordinates(int x);

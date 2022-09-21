@@ -1,4 +1,7 @@
 #include "atd.h"
+#include <string>
+#include <stdio.h>
+#include <iostream>
 
 //конструктор класса employee со всеми параметрами
 employee::employee(int i, experience e, hours h, jobtitle j) {
@@ -52,22 +55,20 @@ void employee::input() {
 int employee::getsalary(int overtimecost, int weekendscost, int exppercent, \
 	int expstatus, int subspercent, int subsstatus) {
 	int salary = 0; //зарплата
-	//float experience = this->exp.getworkingyears() + this->exp.getarmy() + this->exp.getmaternityleave();
-	//salary += this->hour.getnormal() * this->jt.gethourlycost();
-	//salary += this->hour.getovertime() * overtimecost;
-	//salary += this->hour.getweekends() * weekendscost;
-	//subordinates subs;
-	////учет стажа
-	//if (expstatus == true)
-	//	salary += salary / 100 * exppercent * experience;
-	//else
-	//	salary += salary / 100 * exppercent * this->exp.getworkingyears();
-	////учет наличия подчиненных
-	//subs = this->jt.getsubs();
-	//if (subs.getamount() && subsstatus)
-	//	salary += subs.getamount() * salary / 100 * subspercent / subs.getasos();
-	//else
-	//	salary += subs.getamount() * salary / 100 * subspercent;
+	float experience = exp.workingyears + exp.army + exp.maternityleave;
+	salary += hour.normal * jt.hourlycost;
+	salary += hour.overtime * overtimecost;
+	salary += hour.weekends * weekendscost;
+	//учет стажа
+	if (expstatus == true)
+		salary += salary / 100 * exppercent * experience;
+	else
+		salary += salary / 100 * exppercent * exp.workingyears;
+	//учет наличия подчиненных
+	if (jt.subs.amount && subsstatus)
+		salary += jt.subs.amount * salary / 100 * subspercent / jt.subs.asos;
+	else
+		salary += jt.subs.amount * salary / 100 * subspercent;
 	return salary;
 }
 

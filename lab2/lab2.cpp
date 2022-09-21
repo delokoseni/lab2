@@ -1,6 +1,9 @@
 ﻿#include "atd.h"
 #include <conio.h>
 #include <Windows.h>
+#include <string>
+#include <stdio.h>
+#include <iostream>
 
 int main()
 {

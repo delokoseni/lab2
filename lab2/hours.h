@@ -1,6 +1,8 @@
 #pragma once
+
 class hours
 {
+	friend class employee;
 public:
 	hours(int n, int o, int w);
 	hours(int x);
