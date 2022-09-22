@@ -16,7 +16,7 @@ int main()
     experience exp(1);
     hours hour(1);
     jobtitle jt(1);
-    jobtitle jj(200);
+    jobtitle jj(100);
     employee human3(1, exp, hour, jt);
     subordinates s;
     human1.output();

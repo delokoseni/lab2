@@ -3,7 +3,7 @@
 using namespace std;
 
 //конструктор класса experience со всеми параметрами
-experience::experience(float w, int a, float m) {
+experience::experience(int w, int a, int m) {
 	workingyears = w;
 	army = a;
 	maternityleave = m;
@@ -41,9 +41,9 @@ void experience::output() {
 	cout << "Стаж (кол-во лет в декретном отпуске): " << maternityleave << endl;
 }
 
-//метод приведения месяцев стажа к десятичному виду
-float experience::monthstodecimal(int years, float month) {
-	float exp;
-	exp = years + month / 12;
+//метод возвращающий совокупный стаж
+float experience::monthstodecimal() {
+	int exp;
+	exp = workingyears + army + maternityleave;
 	return exp;
 };
