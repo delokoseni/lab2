@@ -22,8 +22,7 @@ Hours inputhour() {
 	return hour;
 }
 
-
-//функция вывода
+//функция инициализации
 Hours hourinitiation(int normal, int overtime, int weekends) {
 	Hours hour;
 	hour.normal = normal;
@@ -32,8 +31,18 @@ Hours hourinitiation(int normal, int overtime, int weekends) {
 	return hour;
 }
 
+//функция вывода
 void houroutput(Hours hour) {
 	printf("Отработано часов за месяц(по графику): %d\n", hour.normal);
 	printf("Отработано часов за месяц(сверхурочно): %d\n", hour.overtime);
 	printf("Отработано часов за месяц(в выходные дни): %d\n", hour.weekends);
+}
+
+//функция возврата совокупности отработанных за месяц часов
+int allhours(Hours hour) {
+	int all;
+	all = hour.normal;
+	all += hour.overtime;
+	all += hour.weekends;
+	return all;
 }

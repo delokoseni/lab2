@@ -20,6 +20,7 @@ void expoutput(Experience exp);
 void houroutput(Hours hour);
 void jtoutput(Jobtitle jt);
 int monthstodecimal(Experience exp);
+int allhours(Hours hour);
 
 //функция инициализации
 Employee initiation(int id, float workingyears, int army, float maternityleave,
