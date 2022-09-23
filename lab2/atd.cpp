@@ -9,19 +9,6 @@
 #include "jobtitle.h"
 #include "atd.h"
 
-Subordinates inputsubs();
-Jobtitle inputjt();
-Hours inputhour();
-Experience inputexp();
-Experience expinitiation(int workingyears, int army, int maternityleave);
-Hours hourinitiation(int normal, int overtime, int weekends);
-Jobtitle jtinitiation(char jtitle[], int hourlycost, int amount, float asos);
-void expoutput(Experience exp);
-void houroutput(Hours hour);
-void jtoutput(Jobtitle jt);
-int monthstodecimal(Experience exp);
-int allhours(Hours hour);
-
 //функция инициализации
 Employee initiation(int id, float workingyears, int army, float maternityleave,
 	int normal, int overtime, int weekends, char jtitle[], int hourlycost, int amount, float asos) {

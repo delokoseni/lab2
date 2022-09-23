@@ -13,8 +13,8 @@ Jobtitle inputjt() {
 	Jobtitle jt;
 	int hourlycost;
 	long lenghtofjtitle = 1; //длина jtitle + 1
-	char* jtitle, c;
-	jtitle = (char*)malloc(sizeof(char));
+	char* jtitle = (char*)malloc(sizeof(char));;
+	char c;
 	printf("¬ведите должность: ");
 	while ((c = getchar()) != '\n') {
 		jtitle[lenghtofjtitle - 1] = c;
