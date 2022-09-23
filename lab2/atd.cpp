@@ -19,6 +19,7 @@ Jobtitle jtinitiation(char jtitle[], int hourlycost, int amount, float asos);
 void expoutput(Experience exp);
 void houroutput(Hours hour);
 void jtoutput(Jobtitle jt);
+int monthstodecimal(Experience exp);
 
 //функция инициализации
 Employee initiation(int id, float workingyears, int army, float maternityleave,

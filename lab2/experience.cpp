@@ -39,3 +39,10 @@ void expoutput(Experience exp) {
 }
 
 //функция возвращающая общий стаж
+int monthstodecimal(Experience exp) {
+	int allexp;
+	allexp = exp.workingyears;
+	allexp += exp.army;
+	allexp += exp.maternityleave;
+	return allexp;
+}
