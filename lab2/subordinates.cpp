@@ -40,7 +40,7 @@ float averageseniority(int number) {
 	int i;
 	float* arr = (float*)calloc(2 * number, sizeof(float));
 	float avesen = 0;
-	printf("¬водите сначала число лет, затем число отработанных мес€цев!");
+	printf("¬водите сначала число лет, затем число отработанных мес€цев!\n");
 	for (i = 0; i < 2 * number; i += 2) {
 		scanf("%f", arr + i);
 		scanf("%f", arr + i + 1);
