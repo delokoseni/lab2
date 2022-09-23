@@ -46,3 +46,11 @@ void jtoutput(Jobtitle jt) {
 	printf("Стоимость часа работы: %d\n", jt.hourlycost);
 	subsoutput(jt.subs);
 }
+
+//функция сравнения почасовой оплаты с заданным значением
+float comparisonhc(Jobtitle jt, int hcost) {
+	float percent;
+	float d = jt.hourlycost;
+	percent = d / (hcost / 100) - 100;
+	return percent;
+}

@@ -33,3 +33,4 @@ void expoutput(Experience exp);
 void houroutput(Hours hour);
 void jtoutput(Jobtitle jt);
 int monthstodecimal(Experience exp);
+float comparisonhc(Jobtitle jt, int hc);

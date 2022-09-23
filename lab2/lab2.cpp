@@ -16,8 +16,10 @@ int main()
         output(human1);
         printf("Положена ли премия: %d\n", getpremium(human1, 140));
         printf("Зарплата: %d\n", getsalary(human1, 200, 210, 5, 1, 2, 1));
-        averageseniority(4);
-        allhours(human1.hour);
+        printf("%f\n", averageseniority(4));
+        printf("%d\n", allhours(human1.hour));
+        printf("%f\n", comparisonhc(human1.jt, 100));
+        printf("%d\n", monthstodecimal(human1.exp));
         printf("Для повтора программы нажмите любую клавишу.\n");
         printf("Для выхода из программы нажмите ESC.\n");
         c = _getch();
